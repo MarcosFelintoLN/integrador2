@@ -1,5 +1,13 @@
 from rest_framework import serializers
-from restaurante.models import Carrinho, Produto
+from restaurante.models import Carrinho, Produto, Restaurantes
+from usuarios.api.serializers import FuncionarioSerializer, EnderecoSerializer
+
+class RestauranteSerializer(serializers.ModelSerializer):
+    funcionario = FuncionarioSerializer(read_only=True)
+    endereco = EnderecoSerializer(read_only=True)
+    class Meta:
+        model = Restaurantes
+        fields = ['id','nome','cnpj','endereco','funcionario']
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,7 +15,7 @@ class ProdutoSerializer(serializers.ModelSerializer):
         fields = ['id','nome','preco','ingredientes','quantidade']
 
 class CarrinhoSerializer(serializers.ModelSerializer):
+    produtos = ProdutoSerializer(read_only=True)
     class Meta:
         model = Carrinho
-        produtos = ProdutoSerializer(read_only=True)
-        fields = ['id','data','produtos',]
+        fields = ['id','data','produtos','cliente']
