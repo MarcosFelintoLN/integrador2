@@ -1,11 +1,10 @@
 from django.db import models
-from usuarios.models import Endereco, Funcionario, Usuario
+from usuarios.models import Endereco
 
 class Restaurantes(models.Model):
     nome = models.CharField(verbose_name="Nome",max_length=100)
     cnpj = models.CharField(verbose_name="CNPJ",max_length=20)
     endereco = models.ForeignKey(Endereco, on_delete=models.CASCADE)
-    funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
 
 class Produto(models.Model):
     nome = models.CharField(verbose_name="Nome",max_length=50)
@@ -17,6 +16,6 @@ class Produto(models.Model):
         return self.nome
     
 class Carrinho(models.Model):
-    produtos = models.ManyToManyField(Produto)
+    produtos = models.ForeignKey(Produto, on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True)
-    cliente = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='carrinho',default=True)
+    """cliente = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='carrinho',default=True)"""

@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from usuarios.models import Endereco, Usuario, Funcionario
+from usuarios.models import Endereco
 
 class EnderecoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Endereco
         fields = ['id','rua','bairro','numero']
 
+"""
 class UsuarioSerializer(serializers.ModelSerializer):
     endereco = EnderecoSerializer()
     class Meta:
@@ -24,4 +25,4 @@ class FuncionarioSerializer(serializers.ModelSerializer):
 
         funcionario = Funcionario.objects.create(endereco=endereco, **validated_data)
 
-        return funcionario
+        return funcionario"""
