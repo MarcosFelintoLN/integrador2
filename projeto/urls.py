@@ -1,20 +1,21 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework.schemas import get_schema_view
 
 from restaurante.api.viewsets import ProdutoViewSet, CarrinhoViewSet, RestauranteViewSet
-#from usuarios.api.viewsets import UsuarioViewSet, FuncionarioViewSet
+from usuarios.api.viewsets import ClienteViewSet
 
 router = routers.SimpleRouter()
 router.register('carrinho',CarrinhoViewSet) #ok
 router.register('produto',ProdutoViewSet) #ok
-#router.register('usuario',UsuarioViewSet) #erro
+router.register('cliente',ClienteViewSet) #erro
 router.register('restaurante',RestauranteViewSet) #ok
-#router.register('funcionario',FuncionarioViewSet) #erro
-"""router.register('endereco',EnderecoViewSet)"""
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include(router.urls))
+    path('api/',include(router.urls)),
+    path('api_schema', get_schema_view(title='API Schema', description='Guide for the REST API'), name='api_schema'),
     
 ]

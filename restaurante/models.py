@@ -1,5 +1,5 @@
 from django.db import models
-from usuarios.models import Endereco
+from usuarios.models import Endereco, Cliente
 
 class Restaurantes(models.Model):
     nome = models.CharField(verbose_name="Nome",max_length=100)
@@ -18,4 +18,4 @@ class Produto(models.Model):
 class Carrinho(models.Model):
     produtos = models.ForeignKey(Produto, on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True)
-    """cliente = models.OneToOneField(Usuario, on_delete=models.CASCADE, related_name='carrinho',default=True)"""
+    """cliente = models.OneToOneField(Cliente, on_delete=models.CASCADE, related_name='carrinho',default=True)"""

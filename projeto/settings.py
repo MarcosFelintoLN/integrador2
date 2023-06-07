@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'restaurante',
     'usuarios',
+    #'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#AUTH_USER_MODEL = "usuarios.Usuario"
+AUTH_USER_MODEL = "usuarios.Cliente"
 
 
 # Internationalization

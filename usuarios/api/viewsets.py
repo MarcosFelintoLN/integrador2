@@ -1,15 +1,11 @@
 from rest_framework.viewsets import ModelViewSet
-from usuarios.api.serializers import EnderecoSerializer
-from usuarios.models import Endereco
+from usuarios.api.serializers import EnderecoSerializer, ClienteSerializer
+from usuarios.models import Endereco, Cliente
 
 class EnderecoViewSet(ModelViewSet):
     queryset = Endereco.objects.all()
     serializer_class = EnderecoSerializer()
 
-"""class UsuarioViewSet(ModelViewSet):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer()"""
-
-"""class FuncionarioViewSet(ModelViewSet):
-    queryset = Funcionario.objects.all()
-    serializer_class = FuncionarioSerializer()"""
+class ClienteViewSet(ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer()
