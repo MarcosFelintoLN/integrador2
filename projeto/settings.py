@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'restaurante',
     'usuarios',
-    #'rest_framework_swagger',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'projeto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
